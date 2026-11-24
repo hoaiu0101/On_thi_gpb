@@ -2,10 +2,10 @@
 
 Ứng dụng web ôn thi trắc nghiệm môn **Giải phẫu bệnh** (Răng Hàm Mặt – Đại học Quốc tế Hồng Bàng), bám sát slide bài giảng TS.BS. Tiền Thanh Liêm.
 
-- **211 câu**: 204 câu từ slide (8 bài) + 7 câu “Mở rộng” ngoài slide (có ghi nguồn).
-- Mức độ: Dễ 65 · Trung bình 66 · Khó 50 · Rất khó 30 (≈ 30/30/25/15%).
-- Mỗi câu có: đáp án, giải thích, lý do các phương án khác sai (câu khó), bẫy thường gặp, cảnh báo “cần xác minh”, nguồn slide.
-- **Luyện tập** theo bài / mức độ / ưu tiên · **Thi thử**: 3 đề mô phỏng 40 câu – 50 phút, và đề ngẫu nhiên cân bằng độ khó · **Flashcard** · **Ôn câu sai** · **Ghi nhớ**: trọng tâm, cặp khái niệm dễ nhầm, nội dung cần xác minh, tra cứu không dấu.
+- **219 câu**, trong đó **189 câu bám đề cương ôn tập của giảng viên** (36 mục trong file “Ôn tập Giải phẫu bệnh”); 23 câu ngoài đề cương và 7 câu “Mở rộng” ngoài slide (có ghi nguồn) để ôn rộng thêm.
+- Mức độ (189 câu bám đề cương): Dễ 60 · Trung bình 57 · Khó 45 · Rất khó 27 (≈ 32/30/24/14%).
+- Mỗi câu có: đáp án, giải thích, lý do các phương án khác sai (mọi câu khó và câu dễ nhầm), bẫy thường gặp, cảnh báo “cần xác minh”, nguồn (tên file + số slide), mục đề cương.
+- **Luyện tập** theo bài / mức độ / ưu tiên / từng mục đề cương (mặc định chỉ câu bám đề cương) · **Thi thử**: 3 đề mô phỏng 40 câu – 50 phút chỉ gồm câu bám đề cương, và đề ngẫu nhiên cân bằng độ khó · **Flashcard** · **Ôn câu sai** · **Ghi nhớ**: đề cương GV, trọng tâm, cặp khái niệm dễ nhầm, nội dung cần xác minh, tra cứu không dấu.
 - Dùng được **offline** sau lần mở đầu tiên, có thể **thêm vào màn hình chính** như một ứng dụng.
 - Tiến độ lưu trên trình duyệt của từng thiết bị; dùng “Sao lưu (JSON)” để chuyển sang máy khác.
 
@@ -16,7 +16,7 @@
 | `index.html` | Toàn bộ ứng dụng + ngân hàng câu hỏi |
 | `manifest.webmanifest`, `sw.js` | Cài lên màn hình chính, dùng offline |
 | `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` | Biểu tượng |
-| `tai-lieu/` | (Không bắt buộc) File PowerPoint/Excel để tải về. Thiếu thư mục này thì trang tự ẩn mục “Tài liệu kèm theo”. |
+| `tai-lieu/` | (Không bắt buộc) File PowerPoint/Excel/PDF (đề + kết quả tô đậm) để tải về. Thiếu thư mục này thì trang tự ẩn mục “Tài liệu kèm theo”. |
 
 ## Đưa lên GitHub Pages
 
@@ -45,10 +45,11 @@ Ngân hàng câu hỏi nằm trong `index.html`, ở dòng bắt đầu bằng `
 
 ```
 {"c":"GPB38-20","t":"3.8","l":3,"p":"C","y":"Tình huống","q":"Câu hỏi…","o":["A","B","C","D"],"a":1,
- "e":"Giải thích…","w":"Vì sao phương án khác sai…","k":"Bẫy…","f":"Cần xác minh…","s":"3.8 – slide 29"}
+ "e":"Giải thích…","w":"Vì sao phương án khác sai…","k":"Bẫy…","f":"Cần xác minh…",
+ "s":"3.8.HIU-BỆNH HỌC KHOANG MIỆNG.pdf – slide 29","g":"3.8-5"}
 ```
 
-`a` là số thứ tự đáp án đúng (0 = A, 1 = B, 2 = C, 3 = D). Trong `e`, `w`, `k`, ký hiệu `{#2}` sẽ tự hiện thành chữ cái của phương án thứ 3 sau khi đáp án được đảo. Sau khi sửa, đổi `CACHE = "gpb-hiu-v2"` trong `sw.js` sang số mới (v3, v4…) để máy người dùng nhận bản mới.
+`a` là số thứ tự đáp án đúng (0 = A, 1 = B, 2 = C, 3 = D). `g` là mục đề cương ôn tập của GV (VD `3.8-5` = Bài 3.8, mục 5; để `""` nếu câu ngoài đề cương). Trong `e`, `w`, `k`, ký hiệu `{#2}` sẽ tự hiện thành chữ cái của phương án thứ 3 sau khi đáp án được đảo. Sau khi sửa, đổi `CACHE = "gpb-hiu-v3"` trong `sw.js` sang số mới (v4, v5…) để máy người dùng nhận bản mới.
 
 ## Lưu ý
 

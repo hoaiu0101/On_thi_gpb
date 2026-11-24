@@ -1,5 +1,5 @@
 // Service worker: lưu bộ nhớ đệm để dùng offline sau lần mở đầu tiên (ưu tiên mạng, mất mạng thì dùng bản lưu)
-const CACHE = "gpb-hiu-v2";
+const CACHE = "gpb-hiu-v3";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
